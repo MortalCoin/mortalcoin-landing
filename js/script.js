@@ -1,6 +1,17 @@
 // Future JavaScript for interactivity can be added here. 
 
 window.addEventListener('load', () => {
+    // Hamburger menu toggle
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    }
+
     const rainContainer = document.getElementById('rain-container');
     if (!rainContainer) return;
 

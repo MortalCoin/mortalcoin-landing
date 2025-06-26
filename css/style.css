@@ -5,10 +5,75 @@ body {
     margin: 0;
     line-height: 1.6;
     font-size: 22px; /* Base font size */
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 h1, h2, h3 {
     font-family: 'Jersey 20', cursive;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20; /* High z-index to be on top of everything */
+    box-sizing: border-box; /* To include padding in the width calculation */
+    display: flex;
+    justify-content: center; /* Center nav links on desktop */
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: transparent;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-left {
+    justify-content: flex-start;
+}
+
+.nav-right {
+    justify-content: flex-end;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: underline;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffa500;
+}
+
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.hamburger-menu .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #ffffff;
+    transition: all 0.3s ease-in-out;
 }
 
 main {
@@ -254,6 +319,57 @@ footer {
     .scroll-animation.fade-out {
         opacity: 0;
         transform: translate(-80%, -50%) scale(0.3);
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #1f1f1f;
+        text-align: center;
+        padding: 1rem 0;
+        border-top: 2px solid #ff4500;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .logo {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .hamburger-menu {
+        display: block;
+        margin-right: 1rem; /* Add some spacing from the edge */
+    }
+
+    /* Animation for hamburger to "X" */
+    .hamburger-menu.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger-menu.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger-menu.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    header {
+        justify-content: flex-end; /* Push hamburger to the right */
+    }
+
+    /* On mobile, make the fire next to the play button always visible */
+    .pixel-button-container .fire-hover {
+        opacity: 1;
     }
 }
 
