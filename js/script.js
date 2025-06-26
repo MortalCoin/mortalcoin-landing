@@ -1,6 +1,6 @@
 // Future JavaScript for interactivity can be added here. 
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
     const rainContainer = document.getElementById('rain-container');
     if (!rainContainer) return;
 
