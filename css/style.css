@@ -1,13 +1,11 @@
 body {
     font-family: 'Jersey 20', cursive;
-    background-color: #121212;
     color: #e0e0e0;
     margin: 0;
     line-height: 1.6;
     font-size: 22px; /* Base font size */
     overflow-x: hidden; /* Prevent horizontal scroll */
     background: radial-gradient(ellipse at top, rgba(255, 51, 102, 0.2), transparent 60%),
-                radial-gradient(ellipse at bottom, rgba(255, 165, 0, 0.2), transparent 70%),
                 #121212;
     animation: pulse-glow 10s infinite alternate;
 }
