@@ -111,4 +111,91 @@ window.addEventListener('load', () => {
             observer.observe(container);
         });
     }
+
+    // Fetch and display leaderboard
+    const leaderboardContainer = document.getElementById('leaderboard-container');
+    const leaderboardTableContainer = document.getElementById('leaderboard-table-container');
+
+    if (leaderboardTableContainer) {
+        fetch('https://api.mortalcoin.app/api/v1/statistics/leaderboard/')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const loader = leaderboardTableContainer.querySelector('.leaderboard-loader');
+                if (loader) {
+                    loader.remove();
+                }
+
+                // Update total users count
+                const totalUsersSpan = document.getElementById('total-users-count');
+                if (totalUsersSpan && data.count) {
+                    totalUsersSpan.textContent = data.count.toLocaleString();
+                }
+
+                const players = data.results;
+
+                if (!players || players.length === 0) {
+                    leaderboardTableContainer.innerHTML = '<p>Leaderboard is currently empty.</p>';
+                    return;
+                }
+
+                const table = document.createElement('table');
+                table.id = 'leaderboard-table';
+
+                const thead = document.createElement('thead');
+                thead.innerHTML = `
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Mortal Points</th>
+                    </tr>
+                `;
+                table.appendChild(thead);
+
+                const tbody = document.createElement('tbody');
+                players.slice(0, 10).forEach(player => { // Display top 10
+                    const row = document.createElement('tr');
+                    
+                    const rankCell = document.createElement('td');
+                    rankCell.className = 'rank';
+                    switch (player.rank) {
+                        case 1:
+                            rankCell.innerHTML = '👑';
+                            break;
+                        case 2:
+                            rankCell.innerHTML = '🥈';
+                            break;
+                        case 3:
+                            rankCell.innerHTML = '🥉';
+                            break;
+                        default:
+                            rankCell.textContent = player.rank;
+                    }
+                    row.appendChild(rankCell);
+
+                    const userCell = document.createElement('td');
+                    userCell.className = 'user';
+                    userCell.textContent = player.first_name || 'Anonymous';
+                    row.appendChild(userCell);
+
+                    const pointsCell = document.createElement('td');
+                    pointsCell.className = 'points';
+                    pointsCell.textContent = `${player.mortal_points} MP`;
+                    row.appendChild(pointsCell);
+
+                    tbody.appendChild(row);
+                });
+                table.appendChild(tbody);
+
+                leaderboardTableContainer.appendChild(table);
+            })
+            .catch(error => {
+                console.error('Failed to fetch leaderboard:', error);
+                leaderboardTableContainer.innerHTML = '<p>Could not load leaderboard data. Please try again later.</p>';
+            });
+    }
 }); 

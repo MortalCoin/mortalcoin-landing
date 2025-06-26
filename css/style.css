@@ -630,3 +630,135 @@ footer {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
+
+/* Leaderboard Section */
+#leaderboard-section {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+#leaderboard-section h2 {
+    font-size: 2.5em; /* Match game style */
+    margin-bottom: 2rem;
+}
+
+#leaderboard-container {
+    max-width: 450px; /* Closer to game width */
+    margin: 0 auto;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+}
+
+.leaderboard-summary-card {
+    background-color: #262626;
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+
+.summary-info h3 {
+    margin: 0;
+    color: #c5c5c4;
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+.summary-trophy img {
+    width: 60px;
+    height: auto;
+}
+
+#leaderboard-table-container {
+    position: relative;
+    min-height: 300px;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.leaderboard-loader {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid #ff4500;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -20px;
+    margin-left: -20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+#leaderboard-table th, 
+#leaderboard-table td {
+    padding: 0.5rem;
+    text-align: left;
+    border: none;
+    color: #c5c5c4;
+}
+
+#leaderboard-table thead tr {
+    border-bottom: 1px solid #333;
+}
+
+#leaderboard-table th {
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+#leaderboard-table td {
+    font-size: 0.9em;
+}
+
+#leaderboard-table th:first-child, 
+#leaderboard-table td:first-child {
+    width: 20%;
+    text-align: center;
+}
+
+#leaderboard-table th:last-child, 
+#leaderboard-table td:last-child {
+    width: 30%;
+    text-align: right;
+}
+
+#leaderboard-table td.rank {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+#leaderboard-table tr:nth-child(1) td.rank { color: #FFD700; }
+#leaderboard-table tr:nth-child(2) td.rank { color: #C0C0C0; }
+#leaderboard-table tr:nth-child(3) td.rank { color: #CD7F32; }
+
+
+#leaderboard-table td.user {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#leaderboard-table td.points {
+    font-weight: bold;
+}
