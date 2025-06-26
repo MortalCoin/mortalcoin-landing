@@ -12,14 +12,11 @@ h1, h2, h3 {
 }
 
 header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 20; /* High z-index to be on top of everything */
-    box-sizing: border-box; /* To include padding in the width calculation */
+    position: relative; /* Needed for absolute positioning context */
+    z-index: 20;
+    box-sizing: border-box;
     display: flex;
-    justify-content: center; /* Center nav links on desktop */
+    justify-content: flex-end; /* Push right content to the edge */
     align-items: center;
     padding: 1rem 2rem;
     background-color: transparent;
@@ -32,6 +29,14 @@ header {
 
 .logo img {
     height: 60px;
+}
+
+.nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex; /* Ensure its children are also in a row */
+    gap: 2rem;
 }
 
 .nav-links {
@@ -351,6 +356,8 @@ footer {
     .hamburger-menu {
         display: block;
         margin-right: 1rem; /* Add some spacing from the edge */
+        z-index: 1001; /* Ensure hamburger is on top of nav links */
+        position: relative;
     }
 
     /* Animation for hamburger to "X" */
@@ -366,6 +373,37 @@ footer {
 
     header {
         justify-content: flex-end; /* Push hamburger to the right */
+    }
+
+    .nav-center, .nav-right {
+        display: none; /* Hide both navs on mobile by default */
+    }
+
+    /* Combined mobile navigation container */
+    #mobile-nav-container {
+        display: none; /* Hidden by default on all screen sizes */
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: #1f1f1f;
+        flex-direction: column;
+        text-align: center;
+        padding-top: 6rem; /* Space for header */
+        padding-bottom: 2rem;
+        border-bottom: 2px solid #ff4500;
+        z-index: 1000;
+    }
+
+    #mobile-nav-container.active {
+        display: flex;
+    }
+
+    #mobile-nav-container a {
+        color: #ffffff;
+        text-decoration: underline;
+        font-size: 1.5rem;
+        padding: 0.5rem 0;
     }
 
     /* On mobile, make the fire next to the play button always visible */

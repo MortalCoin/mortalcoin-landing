@@ -3,12 +3,24 @@
 window.addEventListener('load', () => {
     // Hamburger menu toggle
     const hamburger = document.querySelector('.hamburger-menu');
-    const navLinks = document.querySelector('.nav-links');
+    const mobileNavContainer = document.getElementById('mobile-nav-container');
 
-    if (hamburger && navLinks) {
+    if (hamburger && mobileNavContainer) {
+        let isMenuPopulated = false;
+
         hamburger.addEventListener('click', () => {
+            // Populate the menu only on the first click
+            if (!isMenuPopulated) {
+                const allNavLinks = document.querySelectorAll('.nav-links a');
+                allNavLinks.forEach(link => {
+                    const newLink = link.cloneNode(true);
+                    mobileNavContainer.appendChild(newLink);
+                });
+                isMenuPopulated = true;
+            }
+            
             hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
+            mobileNavContainer.classList.toggle('active');
         });
     }
 
