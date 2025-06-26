@@ -96,7 +96,6 @@ section {
     align-items: center; /* Revert to center for a predictable base */
     justify-content: center;
     min-height: 90vh; /* Set the height for the viewport */
-    transform: translateY(-100px);
     box-sizing: border-box; /* Ensure padding is included in the element's total height */
 }
 
@@ -238,6 +237,10 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .hero-wrapper {
+        transform: translateY(-100px);
+    }
+
     section {
         padding-left: 1rem;
         padding-right: 1rem;
