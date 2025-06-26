@@ -546,3 +546,22 @@ footer {
         margin-right: 10px;
     }
 }  */
+
+#contact .contact-links {
+    margin-top: 2rem;
+}
+
+#contact .contact-links p {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+}
+
+#contact .contact-links a {
+    color: #ffa500;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+#contact .contact-links a:hover {
+    color: #ffffff;
+}
