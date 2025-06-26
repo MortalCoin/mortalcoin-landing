@@ -96,7 +96,7 @@ section {
     align-items: center; /* Revert to center for a predictable base */
     justify-content: center;
     min-height: 90vh; /* Set the height for the viewport */
-    padding-bottom: env(safe-area-inset-bottom); /* Add padding for mobile browser UI */
+    transform: translateY(-50px);
     box-sizing: border-box; /* Ensure padding is included in the element's total height */
 }
 
@@ -258,11 +258,6 @@ footer {
         grid-row: 1 / 2;
         max-width: 90%;
         padding-bottom: 5rem;
-    }
-
-    .hero-wrapper {
-        /* You can change this value to move the hero section up or down on mobile */
-        transform: translateY(-50px);
     }
 
     .fighter-container {
