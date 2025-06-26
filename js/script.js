@@ -54,9 +54,9 @@ window.addEventListener('load', () => {
                     animationElement.classList.remove('fade-out');
                     animationElement.classList.add('animate');
 
-                    const originalSrc = animationElement.src;
-                    animationElement.src = ''; // Force restart
-                    animationElement.src = originalSrc;
+                    // Cache-busting to force GIF replay
+                    const originalSrc = animationElement.src.split('?')[0];
+                    animationElement.src = `${originalSrc}?t=${new Date().getTime()}`;
 
                     const newTimeout = setTimeout(() => {
                         animationElement.classList.add('fade-out');
