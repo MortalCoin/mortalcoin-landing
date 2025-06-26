@@ -260,6 +260,10 @@ footer {
         padding-bottom: 5rem;
     }
 
+    .hero-wrapper {
+        min-height: 80vh; /* Reduce height on mobile to lift content */
+    }
+
     .fighter-container {
         width: auto;
         height: auto;
