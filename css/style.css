@@ -93,7 +93,7 @@ section {
 
 .hero-wrapper {
     display: flex;
-    align-items: center;
+    align-items: center; /* Revert to center for a predictable base */
     justify-content: center;
     min-height: 90vh; /* Set the height for the viewport */
     padding-bottom: env(safe-area-inset-bottom); /* Add padding for mobile browser UI */
@@ -261,7 +261,8 @@ footer {
     }
 
     .hero-wrapper {
-        min-height: 80vh; /* Reduce height on mobile to lift content */
+        /* You can change this value to move the hero section up or down on mobile */
+        transform: translateY(-50px);
     }
 
     .fighter-container {
