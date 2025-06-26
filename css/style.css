@@ -5,7 +5,6 @@ body {
     margin: 0;
     line-height: 1.6;
     font-size: 22px; /* Base font size */
-    padding-bottom: env(safe-area-inset-bottom);
 }
 
 h1, h2, h3 {
@@ -92,6 +91,8 @@ section {
     align-items: center;
     justify-content: center;
     min-height: 90vh; /* Set the height for the viewport */
+    padding-bottom: env(safe-area-inset-bottom); /* Add padding for mobile browser UI */
+    box-sizing: border-box; /* Ensure padding is included in the element's total height */
 }
 
 #hero {
