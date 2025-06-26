@@ -1,21 +1,33 @@
 body {
     font-family: 'Jersey 20', cursive;
+    background-color: #121212;
     color: #e0e0e0;
     margin: 0;
     line-height: 1.6;
     font-size: 22px; /* Base font size */
+    position: relative;
+    z-index: 1;
     overflow-x: hidden; /* Prevent horizontal scroll */
-    background: radial-gradient(ellipse at top, rgba(255, 51, 102, 0.2), transparent 60%),
-                #121212;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at top, rgba(255, 51, 102, 0.2), transparent 70%);
     animation: pulse-glow 10s infinite alternate;
+    z-index: -1;
 }
 
 @keyframes pulse-glow {
     from {
-        background-color: #121212;
+        opacity: 0.5;
     }
     to {
-        background-color: #242424;
+        opacity: 1;
     }
 }
 
@@ -107,7 +119,7 @@ section {
     display: flex;
     align-items: center; /* Revert to center for a predictable base */
     justify-content: center;
-    min-height: 90vh; /* Set the height for the viewport */
+    min-height: calc(var(--vh, 1vh) * 90); /* Fallback to 90vh */
     box-sizing: border-box; /* Ensure padding is included in the element's total height */
 }
 
@@ -122,11 +134,13 @@ section {
 }
 
 .fighter-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    text-align: center;
+    position: relative;
     width: 30vw;
-    height: 45vh; /* Give containers a fixed height */
+    height: calc(var(--vh, 1vh) * 45); /* Fallback to 45vh */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Align content to the bottom */
     min-width: 150px;
     align-self: end;
 }
@@ -508,12 +522,14 @@ footer {
 }
 
 .raindrop {
-  position: absolute;
-  top: -100px; /* Start off-screen */
-  animation: rain-fall linear infinite;
+    position: absolute;
+    bottom: 100%;
+    animation: fall linear infinite;
+    transform: translateY(calc(var(--vh, 1vh) * 110)); /* Fallback to 110vh */
 }
 
-@keyframes rain-fall {
+/* Raindrop Animation */
+@keyframes fall {
     0% {
       transform: translateY(0);
       opacity: 1;

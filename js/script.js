@@ -1,5 +1,18 @@
 // Future JavaScript for interactivity can be added here. 
 
+// vh unit fix for mobile browsers
+function setVh() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+// Set the value on initial load
+setVh();
+
+// Re-calculate on resize and orientation change
+window.addEventListener('resize', setVh);
+window.addEventListener('orientationchange', setVh);
+
 window.addEventListener('load', () => {
     // Hamburger menu toggle
     const hamburger = document.querySelector('.hamburger-menu');
