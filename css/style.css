@@ -1,5 +1,5 @@
 body {
-    font-family: 'Jersey 20', cursive;
+    font-family: 'Jersey 20', Arial, sans-serif;
     background-color: #121212;
     color: #e0e0e0;
     margin: 0;
@@ -32,7 +32,7 @@ body::before {
 }
 
 h1, h2, h3 {
-    font-family: 'Jersey 20', cursive;
+    font-family: 'Jersey 20', Arial, sans-serif;
 }
 
 header {
@@ -198,12 +198,12 @@ section {
 
 #hero .subtitle {
     font-size: 2rem;
-    font-family: 'Jersey 20', cursive;
+    font-family: 'Jersey 20', Arial, sans-serif;
     margin-bottom: 1.5rem;
 }
 
 .play-button-main {
-    font-family: 'Jersey 20', cursive;
+    font-family: 'Jersey 20', Arial, sans-serif;
     text-decoration: none;
     color: #121212;
     background-color: #ffa500;
@@ -502,7 +502,7 @@ footer {
   align-items: center;
   justify-content: center;
   color: #FFFFFF; /* Text Default from theme */
-  font-family: 'Jersey 20', cursive;
+  font-family: 'Jersey 20', Arial, sans-serif;
   font-size: 1.5rem;
   padding: 0px;
   transition: background-color 0.3s;
@@ -729,6 +729,7 @@ footer {
 
 #leaderboard-table td {
     font-size: 0.9em;
+    font-family: inherit;
 }
 
 #leaderboard-table th:first-child, 
@@ -754,6 +755,8 @@ footer {
 
 
 #leaderboard-table td.user {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6em;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
